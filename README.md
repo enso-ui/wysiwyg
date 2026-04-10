@@ -1,17 +1,15 @@
 # WYSIWYG
 
-[![License](https://poser.pugx.org/enso-ui/wysiwyg/license)](https://packagist.org/packages/enso-ui/wysiwyg)
-[![Latest Stable Version](https://poser.pugx.org/enso-ui/wysiwyg/version)](https://packagist.org/packages/enso-ui/wysiwyg)
-
-WYSIWYG
+WYSIWYG editor component.
 
 ### Features
 
-- soon
+- TinyMCE-based editing
+- theme-aware styling
 
 ### Configuration & Usage
 
-- soon
+Use the component where rich text editing is needed inside the Enso ecosystem.
 
 ### Contributions
 
