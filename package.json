@@ -1,29 +1,29 @@
 {
-  "name": "@enso-ui/wysiwyg",
-  "version": "3.1.1",
-  "description": "WYSIWYG",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/enso-ui/wysiwyg.git"
-  },
-  "keywords": [
-    "wysiwyg",
-    "vue"
-  ],
-  "author": "Adrian Ocneanu <aocneanu@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/enso-ui/wysiwyg/issues"
-  },
-  "homepage": "https://github.com/enso-ui/wysiwyg#readme",
-  "dependencies": {
-    "@tinymce/tinymce-vue": "^4.0.0"
-  },
-  "peerDependencies": {
-    "vue": "^3.5.0"
-  },
-  "devDependencies": {
-    "vue": "^3.5.0"
-  }
+    "name": "@enso-ui/wysiwyg",
+    "version": "3.1.1",
+    "description": "TinyMCE-based WYSIWYG field for Enso UI.",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/enso-ui/wysiwyg.git"
+    },
+    "keywords": [
+        "wysiwyg",
+        "vue"
+    ],
+    "author": "Adrian Ocneanu <aocneanu@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/enso-ui/wysiwyg/issues"
+    },
+    "homepage": "https://github.com/enso-ui/wysiwyg#readme",
+    "dependencies": {
+        "@tinymce/tinymce-vue": "^4.0.0"
+    },
+    "peerDependencies": {
+        "vue": "^3.5.0"
+    },
+    "devDependencies": {
+        "vue": "^3.5.0"
+    }
 }
