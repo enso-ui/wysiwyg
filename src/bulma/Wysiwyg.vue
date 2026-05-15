@@ -10,7 +10,20 @@
 
 <script>
 import Editor from '@tinymce/tinymce-vue';
-
+import 'tinymce/tinymce';
+import 'tinymce/icons/default/icons';
+import 'tinymce/themes/silver/theme';
+import 'tinymce/plugins/autolink/plugin';
+import 'tinymce/plugins/autoresize/plugin';
+import 'tinymce/plugins/code/plugin';
+import 'tinymce/plugins/codesample/plugin';
+import 'tinymce/plugins/emoticons/plugin';
+import 'tinymce/plugins/image/plugin';
+import 'tinymce/plugins/link/plugin';
+import 'tinymce/plugins/lists/plugin';
+import 'tinymce/plugins/preview/plugin';
+import 'tinymce/plugins/table/plugin';
+import 'tinymce/skins/ui/oxide/skin.min.css';
 export default {
     name: 'Wysiwyg',
 
