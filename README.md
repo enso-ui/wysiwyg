@@ -9,7 +9,7 @@
 [![Issues](https://img.shields.io/github/issues/enso-ui/wysiwyg.svg)](https://github.com/enso-ui/wysiwyg/issues)
 [![Merge Requests](https://img.shields.io/github/issues-pr/enso-ui/wysiwyg.svg)](https://github.com/enso-ui/wysiwyg/pulls)
 ## Description
-TinyMCE-based WYSIWYG field for Enso UI.
+WYSIWYG field for Enso UI, with TinyMCE as the default editor and optional Trix support.
 ## Installation
 Install the package:
 
@@ -18,12 +18,20 @@ yarn add @enso-ui/wysiwyg
 ```
 ## Features
 - exports `Wysiwyg` as its public surface
+- supports `tinymce` and `trix` editor engines
 - keeps the Bulma presentation layer separate from the renderless/stateful layer where applicable
 ## Usage
 ```vue
 <script setup>
-import Wysiwyg from '@enso-ui/wysiwyg./src/bulma/Wysiwyg.vue';
+import Wysiwyg from '@enso-ui/wysiwyg/bulma';
 </script>
+
+<Wysiwyg v-model="content"
+    :has-error="false"/>
+
+<Wysiwyg v-model="content"
+    editor="trix"
+    :has-error="false"/>
 ```
 ## API
 ### `Wysiwyg`
@@ -32,11 +40,15 @@ Public export available from `src/bulma/Wysiwyg.vue`.
 
 Props:
 - `hasError`
+- `editor`
 - `menubar`
 - `plugins`
 - `toolbar`
+
+`editor` defaults to `tinymce`. Set it to `trix` to use the Trix editor.
 ## Depends On
-- No additional Enso UI dependencies.
+- No additional Enso UI package dependencies.
+- [`trix`](https://github.com/basecamp/trix)
 ## Contributions
 are welcome. Pull requests are great, but issues are good too.
 Thank you to all the people who already contributed to Enso!

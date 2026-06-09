@@ -18,7 +18,8 @@
     },
     "homepage": "https://github.com/enso-ui/wysiwyg#readme",
     "dependencies": {
-        "@tinymce/tinymce-vue": "^4.0.0"
+        "@tinymce/tinymce-vue": "^4.0.0",
+        "trix": "^2.1.19"
     },
     "peerDependencies": {
         "vue": "^3.5.0"

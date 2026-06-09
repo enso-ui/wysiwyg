@@ -1,20 +1,17 @@
 <template>
     <div :class="['wysiwyg-wrapper', {'has-error': hasError}, $attrs.class]">
-        <editor v-bind="$attrs"
-            :key="editorKey"
-            :toolbar="toolbar"
-            :plugins="plugins"
-            :init="editorInit"/>
+        <component :is="editorComponent"
+            :key="componentKey"
+            v-bind="editorBindings"/>
     </div>
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue';
 import Editor from '@tinymce/tinymce-vue';
 
 export default {
     name: 'Wysiwyg',
-
-    components: { Editor },
 
     inheritAttrs: false,
 
@@ -29,6 +26,11 @@ export default {
         hasError: {
             type: Boolean,
             required: true,
+        },
+        editor: {
+            type: String,
+            default: 'tinymce',
+            validator: value => ['tinymce', 'trix'].includes(value),
         },
         menubar: {
             type: [String, Boolean],
@@ -45,6 +47,29 @@ export default {
     },
 
     computed: {
+        editorComponent() {
+            return this.editor === 'trix'
+                ? defineAsyncComponent(() => import('./TrixEditor.vue'))
+                : Editor;
+        },
+        componentKey() {
+            return this.editor === 'tinymce'
+                ? this.editorKey
+                : this.editor;
+        },
+        editorBindings() {
+            if (this.editor === 'trix') {
+                return Object.fromEntries(Object.entries(this.$attrs)
+                    .filter(([key]) => key !== 'apiKey'));
+            }
+
+            return {
+                ...this.$attrs,
+                toolbar: this.toolbar,
+                plugins: this.plugins,
+                init: this.editorInit,
+            };
+        },
         isDarkTheme() {
             return this.theme === 'dark';
         },
@@ -216,5 +241,51 @@ export default {
 
 .wysiwyg-wrapper.has-error {
     border: 1px solid var(--bulma-danger);
+}
+
+.wysiwyg-wrapper {
+    trix-toolbar {
+        .trix-button-row {
+            flex-wrap: wrap;
+        }
+
+        .trix-button-group {
+            background-color: var(--bulma-scheme-main-ter);
+            border-color: var(--bulma-border);
+        }
+
+        .trix-button {
+            border-color: var(--bulma-border);
+        }
+
+        .trix-button:not(:disabled) {
+            color: var(--bulma-text);
+        }
+
+        .trix-button.trix-active {
+            background-color: var(--bulma-scheme-main-bis);
+            color: var(--bulma-text-strong);
+        }
+    }
+
+    trix-editor {
+        background-color: var(--bulma-scheme-main);
+        border-color: var(--bulma-border);
+        border-radius: var(--bulma-radius);
+        color: var(--bulma-text);
+        min-height: 10rem;
+
+        &:focus {
+            border-color: var(--bulma-input-focus-border-color);
+            box-shadow: var(--bulma-input-focus-box-shadow-size)
+                var(--bulma-input-focus-box-shadow-color);
+        }
+    }
+
+    &.has-error {
+        trix-editor {
+            border-color: var(--bulma-danger);
+        }
+    }
 }
 </style>
