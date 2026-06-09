@@ -14,6 +14,7 @@ import 'trix';
 import { computed, nextTick, ref, watch } from 'vue';
 
 defineOptions({
+    name: 'EnsoTrixEditor',
     inheritAttrs: false,
 });
 
