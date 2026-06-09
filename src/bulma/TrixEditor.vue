@@ -1,43 +1,53 @@
-<template>
-    <input :id="inputId"
-        type="hidden"
-        :value="normalizedValue">
-    <trix-editor :input="inputId"
-        ref="trix"
-        @trix-change="update"/>
-</template>
-
-<script setup>
+<script>
 
 import 'trix/dist/trix.css';
 import 'trix';
-import { computed, nextTick, ref, watch } from 'vue';
+import {
+    computed, h, nextTick, ref, watch,
+} from 'vue';
 
-defineOptions({
+export default {
     name: 'EnsoTrixEditor',
+
     inheritAttrs: false,
-});
 
-const props = defineProps({
-    modelValue: {
-        type: [String, null],
-        default: '',
+    props: {
+        modelValue: {
+            type: [String, null],
+            default: '',
+        },
     },
-});
 
-const emit = defineEmits(['update:modelValue']);
-const inputId = `trix-${Math.random().toString(36).slice(2)}`;
-const trix = ref(null);
-const normalizedValue = computed(() => props.modelValue ?? '');
+    emits: ['update:modelValue'],
 
-const update = event => emit('update:modelValue', event.target.value);
+    setup(props, { emit }) {
+        const inputId = `trix-${Math.random().toString(36).slice(2)}`;
+        const trix = ref(null);
+        const normalizedValue = computed(() => props.modelValue ?? '');
 
-watch(() => props.modelValue, value => nextTick(() => {
-    const html = value ?? '';
+        const update = event => emit('update:modelValue', event.target.value);
 
-    if (trix.value && trix.value.value !== html) {
-        trix.value.editor.loadHTML(html);
-    }
-}));
+        watch(() => props.modelValue, value => nextTick(() => {
+            const html = value ?? '';
+
+            if (trix.value && trix.value.value !== html) {
+                trix.value.editor.loadHTML(html);
+            }
+        }));
+
+        return () => [
+            h('input', {
+                id: inputId,
+                type: 'hidden',
+                value: normalizedValue.value,
+            }),
+            h('trix-editor', {
+                input: inputId,
+                ref: trix,
+                onTrixChange: update,
+            }),
+        ];
+    },
+};
 
 </script>

@@ -1,6 +1,6 @@
 {
     "name": "@enso-ui/wysiwyg",
-    "version": "3.2.1",
+    "version": "3.2.2",
     "description": "TinyMCE-based WYSIWYG field for Enso UI.",
     "main": "index.js",
     "repository": {
