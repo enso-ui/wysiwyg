@@ -19,6 +19,7 @@ yarn add @enso-ui/wysiwyg
 ## Features
 - exports `Wysiwyg` as its public surface
 - supports `tinymce` and `trix` editor engines
+- keeps TinyMCE as the default editor for backward compatibility
 - keeps the Bulma presentation layer separate from the renderless/stateful layer where applicable
 ## Usage
 ```vue
@@ -46,6 +47,23 @@ Props:
 - `toolbar`
 
 `editor` defaults to `tinymce`. Set it to `trix` to use the Trix editor.
+
+### Trix
+
+Trix uses the same `v-model` contract as TinyMCE:
+
+```vue
+<Wysiwyg v-model="content"
+    editor="trix"
+    :has-error="false"/>
+```
+
+Form renderers may pass this through backend metadata as `meta.editor: 'trix'`.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
+
 ## Depends On
 - No additional Enso UI package dependencies.
 - [`trix`](https://github.com/basecamp/trix)
