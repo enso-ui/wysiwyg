@@ -1,6 +1,6 @@
 {
     "name": "@enso-ui/wysiwyg",
-    "version": "3.2.2",
+    "version": "3.2.3",
     "description": "TinyMCE-based WYSIWYG field for Enso UI.",
     "main": "index.js",
     "repository": {
@@ -19,6 +19,7 @@
     "homepage": "https://github.com/enso-ui/wysiwyg#readme",
     "dependencies": {
         "@tinymce/tinymce-vue": "^4.0.0",
+        "tinymce": "^5.10.9",
         "trix": "^2.1.19"
     },
     "peerDependencies": {

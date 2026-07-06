@@ -9,6 +9,19 @@
 <script>
 import { defineAsyncComponent } from 'vue';
 import Editor from '@tinymce/tinymce-vue';
+import 'tinymce/tinymce.js';
+import 'tinymce/icons/default/icons.js';
+import 'tinymce/themes/silver/theme.js';
+import 'tinymce/plugins/autolink/plugin.js';
+import 'tinymce/plugins/autoresize/plugin.js';
+import 'tinymce/plugins/code/plugin.js';
+import 'tinymce/plugins/codesample/plugin.js';
+import 'tinymce/plugins/emoticons/plugin.js';
+import 'tinymce/plugins/image/plugin.js';
+import 'tinymce/plugins/link/plugin.js';
+import 'tinymce/plugins/lists/plugin.js';
+import 'tinymce/plugins/preview/plugin.js';
+import 'tinymce/plugins/table/plugin.js';
 
 export default {
     name: 'Wysiwyg',
@@ -38,11 +51,11 @@ export default {
         },
         plugins: {
             type: String,
-            default: 'codesample autolink link autoresize lists emoticons image preview table',
+            default: 'autolink autoresize code codesample emoticons image link lists preview table',
         },
         toolbar: {
             type: String,
-            default: 'newdocument undo redo bold italic strikethrough underline codesample h2 bullist numlist alignleft aligncenter alignright alignjustify blockquote indent outdent link table emoticons forecolor backcolor preview removeformat',
+            default: 'newdocument undo redo bold italic strikethrough underline code codesample h2 bullist numlist alignleft aligncenter alignright alignjustify blockquote indent outdent link table emoticons forecolor backcolor preview removeformat',
         },
     },
 
