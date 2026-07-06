@@ -10,13 +10,12 @@
 import { defineAsyncComponent } from 'vue';
 import Editor from '@tinymce/tinymce-vue';
 import 'tinymce/tinymce.js';
+import 'tinymce/skins/ui/oxide/skin.min.css';
 import 'tinymce/icons/default/icons.js';
 import 'tinymce/themes/silver/theme.js';
 import 'tinymce/plugins/autolink/plugin.js';
-import 'tinymce/plugins/autoresize/plugin.js';
 import 'tinymce/plugins/code/plugin.js';
 import 'tinymce/plugins/codesample/plugin.js';
-import 'tinymce/plugins/emoticons/plugin.js';
 import 'tinymce/plugins/image/plugin.js';
 import 'tinymce/plugins/link/plugin.js';
 import 'tinymce/plugins/lists/plugin.js';
@@ -51,11 +50,11 @@ export default {
         },
         plugins: {
             type: String,
-            default: 'autolink autoresize code codesample emoticons image link lists preview table',
+            default: 'autolink code codesample image link lists preview table',
         },
         toolbar: {
             type: String,
-            default: 'newdocument undo redo bold italic strikethrough underline code codesample h2 bullist numlist alignleft aligncenter alignright alignjustify blockquote indent outdent link table emoticons forecolor backcolor preview removeformat',
+            default: 'newdocument undo redo bold italic strikethrough underline code codesample h2 bullist numlist alignleft aligncenter alignright alignjustify blockquote indent outdent link table forecolor backcolor preview removeformat',
         },
     },
 
@@ -115,7 +114,7 @@ export default {
         editorInit() {
             return {
                 menubar: this.menubar,
-                skin: false,
+                height: 600,
                 content_css: false,
                 content_style: this.contentStyle,
             };

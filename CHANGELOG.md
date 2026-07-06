@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.2.4
+
+### Fixed
+
+- load TinyMCE skin styles from the package dependency
+- remove plugins that require runtime assets outside the bundled module graph
+
 ## 3.2.3
 
 ### Fixed
